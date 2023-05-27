@@ -21,7 +21,7 @@ class CalButton extends StatelessWidget {
           child: Center(
             child: Text(
               buttonTextName,
-              style: const TextStyle(color: textColor),
+              style: const TextStyle(color: textColor, fontSize: 20),
             ),
           ),
         ),
