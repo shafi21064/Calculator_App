@@ -1,5 +1,5 @@
+
 import 'package:calculator_app/components/buttons.dart';
-import 'package:calculator_app/components/upper_part.dart';
 import 'package:calculator_app/constant.dart';
 import 'package:flutter/material.dart';
 
@@ -11,6 +11,10 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  
+  
+  var userInput = '0';
+  var answer = '0';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,74 +22,185 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SafeArea(
           child: Column(
             children: [
-             const UpperPart(),
-              const Divider(height: 25, color: greyButtonColor,),
-              Column(
-                children: [
-                  Row(
-                    children: [
-                      CalButton(
-                        buttonTextName: 'AC',
-                        onPressed: () {},
-                      ),
-                      CalButton(buttonTextName: '+/-', onPressed: () {}),
-                      CalButton(buttonTextName: '%', onPressed: () {}),
-                      CalButton(
-                        buttonTextName: '/',
-                        onPressed: () {},
-                        buttonColor: orangeButtonColor,
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      CalButton(buttonTextName: '7', onPressed: () {}),
-                      CalButton(buttonTextName: '8', onPressed: () {}),
-                      CalButton(buttonTextName: '9', onPressed: () {}),
-                      CalButton(
-                        buttonTextName: 'x',
-                        onPressed: () {},
-                        buttonColor: orangeButtonColor,
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      CalButton(buttonTextName: '4', onPressed: () {}),
-                      CalButton(buttonTextName: '5', onPressed: () {}),
-                      CalButton(buttonTextName: '6', onPressed: () {}),
-                      CalButton(
-                        buttonTextName: '-',
-                        onPressed: () {},
-                        buttonColor: orangeButtonColor,
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      CalButton(buttonTextName: '1', onPressed: () {}),
-                      CalButton(buttonTextName: '2', onPressed: () {}),
-                      CalButton(buttonTextName: '3', onPressed: () {}),
-                      CalButton(
-                        buttonTextName: '+',
-                        onPressed: () {},
-                        buttonColor: orangeButtonColor,
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      CalButton(buttonTextName: '0', onPressed: () {}),
-                      CalButton(buttonTextName: '.', onPressed: () {}),
-                      CalButton(buttonTextName: 'DEL', onPressed: () {}),
-                      CalButton(
-                        buttonTextName: '=',
-                        onPressed: () {},
-                        buttonColor: orangeButtonColor,
-                      ),
-                    ],
-                  )
-                ],
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 20),
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                        Container(
+                          padding: const EdgeInsets.all(20),
+                          alignment: Alignment.centerRight,
+                          child: Text(
+                            userInput,
+                            style: const TextStyle(fontSize: 30, color: Colors.white),
+                          ),
+                        ),
+                        Container(
+                          padding: const EdgeInsets.all(15),
+                          alignment: Alignment.centerRight,
+                          child: Text(
+                            answer,
+                            style: const TextStyle(
+                                fontSize: 40,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        )
+                      ]),
+                ),
+              ),
+
+              const Divider(
+                height: 25,
+                color: greyButtonColor,
+              ),
+              Expanded(
+                flex: 2,
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        CalButton(
+                          buttonTextName: 'AC',
+                          onPressed: () {
+                            setState(() {
+
+                              userInput = '';
+                              answer = '0';
+                            });
+                          },
+                        ),
+                        CalButton(buttonTextName: '+/-', onPressed: () {
+
+                        }),
+                        CalButton(buttonTextName: '%', onPressed: () {
+                          setState(() {
+                            userInput += '%';
+                          });
+                        }),
+                        CalButton(
+                          buttonTextName: '/',
+                          onPressed: () {
+                            setState(() {
+                              userInput += '/';
+                            });
+                          },
+                          buttonColor: orangeButtonColor,
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        CalButton(buttonTextName: '7', onPressed: () {
+                          setState(() {
+                            userInput += '7';
+                          });
+                        }),
+                        CalButton(buttonTextName: '8', onPressed: () {
+                          setState(() {
+                            userInput += '8';
+                          });
+                        }),
+                        CalButton(buttonTextName: '9', onPressed: () {
+                          setState(() {
+                            userInput += '9';
+                          });
+                        }),
+
+                        CalButton(
+                          buttonTextName: 'x',
+                          onPressed: () {
+                            setState(() {
+                              userInput += 'x';
+                            });
+                          },
+                          buttonColor: orangeButtonColor,
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        CalButton(buttonTextName: '4', onPressed: () {
+                          setState(() {
+                            userInput += '4';
+                          });
+                        }),
+                        CalButton(buttonTextName: '5', onPressed: () {
+                          setState(() {
+                            userInput += '5';
+                          });
+                        }),
+                        CalButton(buttonTextName: '6', onPressed: () {
+                          setState(() {
+                            userInput += '6';
+                          });
+                        }),
+                        CalButton(
+                          buttonTextName: '-',
+                          onPressed: () {
+                            setState(() {
+                              userInput += '-';
+                            });
+                          },
+                          buttonColor: orangeButtonColor,
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        CalButton(buttonTextName: '1', onPressed: () {
+                          setState(() {
+                            userInput += '1';
+                          });
+                        }),
+                        CalButton(buttonTextName: '2', onPressed: () {
+                          setState(() {
+                            userInput += '2';
+                          });
+                        }),
+                        CalButton(buttonTextName: '3', onPressed: () {
+                          setState(() {
+                            userInput += '3';
+                          });
+                        }),
+                        CalButton(
+                          buttonTextName: '+',
+                          onPressed: () {
+                            setState(() {
+                              userInput += '+';
+                            });
+                          },
+                          buttonColor: orangeButtonColor,
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        CalButton(buttonTextName: '0', onPressed: () {
+                          setState(() {
+                            userInput += '0';
+                          });
+                        }),
+                        CalButton(buttonTextName: '.', onPressed: () {
+                          setState(() {
+                            userInput += '.';
+                          });
+                        }),
+                        CalButton(buttonTextName: 'DEL', onPressed: () {
+                          setState(() {
+                           userInput = userInput.substring(0, userInput.length - 1);
+                          });
+                        }),
+                        CalButton(
+                          buttonTextName: '=',
+                          onPressed: () {},
+                          buttonColor: orangeButtonColor,
+                        ),
+                      ],
+                    )
+                  ],
+                ),
               ),
             ],
           )),
