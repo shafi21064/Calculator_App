@@ -2,6 +2,7 @@
 import 'package:calculator_app/components/buttons.dart';
 import 'package:calculator_app/constant.dart';
 import 'package:flutter/material.dart';
+import 'package:math_expressions/math_expressions.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -15,6 +16,12 @@ class _HomeScreenState extends State<HomeScreen> {
   
   var userInput = '0';
   var answer = '0';
+
+
+  void equalPress(){
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
