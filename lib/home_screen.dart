@@ -19,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
 
   void equalPress(){
-
+    Parser p = Parser();
   }
 
   @override
