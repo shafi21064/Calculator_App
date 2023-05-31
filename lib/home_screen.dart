@@ -20,6 +20,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void equalPress(){
     Parser p = Parser();
+    Expression expression = p.parse(userInput);
+
   }
 
   @override
