@@ -14,14 +14,18 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   
   
-  var userInput = '0';
+  var userInput = '';
   var answer = '0';
 
 
   void equalPress(){
+    var finalInput = userInput.replaceAll('x', '*');
     Parser p = Parser();
-    Expression expression = p.parse(userInput);
+    Expression expression = p.parse(finalInput);
+    ContextModel contextModel = ContextModel();
 
+    double eval = expression.evaluate(EvaluationType.REAL, contextModel);
+    answer = eval.toString();
   }
 
   @override
@@ -36,7 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   padding: const EdgeInsets.symmetric(vertical: 20),
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: <Widget>[
+                      children:[
                         Container(
                           padding: const EdgeInsets.all(20),
                           alignment: Alignment.centerRight,
@@ -56,7 +60,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                 fontWeight: FontWeight.bold),
                           ),
                         )
-                      ]),
+                      ]
+                  ),
                 ),
               ),
 
@@ -203,7 +208,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         }),
                         CalButton(
                           buttonTextName: '=',
-                          onPressed: () {},
+                          onPressed: () {
+                            setState(() {
+                              equalPress();
+                            });
+                          },
                           buttonColor: orangeButtonColor,
                         ),
                       ],
